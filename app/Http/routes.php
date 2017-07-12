@@ -23,3 +23,6 @@ Route::get('hello', function () {
 Route::get('new', function () {
     return view('hello', ['name' => 'Jennifer']);
 });
+Route::get('about', 'PageController@about');
+
+Route::get('contact', 'PageController@contact');
