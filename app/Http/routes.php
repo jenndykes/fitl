@@ -26,3 +26,5 @@ Route::get('new', function () {
 Route::get('about', 'PageController@about');
 
 Route::get('contact', 'PageController@contact');
+
+Route::get('events/{event}', 'EventController@show');
