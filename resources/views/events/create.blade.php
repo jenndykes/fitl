@@ -25,8 +25,13 @@
 	</div>
 
 	<div class="form-group">
-		{!! Form::label('start_date', 'Start Date') !!}
-		{!! Form::text('start_date', '', ['class' => 'form-control']) !!}
+		{!! Form::label('event_start_date', 'Start Date') !!}
+		{!! Form::text('event_start_date', '', ['class' => 'form-control']) !!}
+	</div>
+
+	<div class="form-group">
+		{!! Form::label('event_end_date', 'End Date') !!}
+		{!! Form::text('event_end_date', '', ['class' => 'form-control']) !!}
 	</div>
 
 	<button class="btn btn-primary">Create Event</button>

@@ -48,10 +48,32 @@ class EventController extends Controller
      */
     public function store(Request $request)
     {
-        echo '<pre>';
-        echo $request->event_name;
-        echo $request->budget;
-        echo '<pre';
+        $event = new Event;
+
+        //set the event's data from the form data
+        $event->event_name = $request->event_name;
+        $event->event_type = $request->event_type;
+        $event->budget = $request->budget;
+        $event->event_start_date = $request->event_start_date;
+        $event->event_end_date = $request->event_end_date;
+
+        //create the new event in the database
+        if (!$event->save()) {
+            $errors = $event->getErrors();
+            
+            // redirect back to the create page
+            // and pass along the errors
+            return redirect()
+                ->action('EventController@create')
+                ->with('errors', $errors)
+                ->withInput();  
+                //passes info on form back to the form on redirect, and repopulate form
+        }
+
+        // successfully added new event
+        return redirect()
+            ->action('EventController@index')
+            ->with('message', '<div class="alert alert-success">New Event Added</div>');
     }
 
     /**

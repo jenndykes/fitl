@@ -12,7 +12,7 @@
 			<a href="{{ url('events', [$events->id]) }}" class="list-group-item">
 				<h2 class="list-group-item-heading">{{ $events->event_name }}</h2>
 				<p class="list-group-item-text">
-					Event Date: {{ $events->event_date }}
+					Event Date: {{ $events->event_start_date }}
 				</p>
 			</a>
 		@endforeach

@@ -12,6 +12,9 @@
 		@include('shared.header')
 		
 		<div class="container-fluid">
+			@include('shared.errors')
+			@include('shared.message')
+
 			@yield('content')
 		</div>
 
