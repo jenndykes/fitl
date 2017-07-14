@@ -18,7 +18,13 @@ class EventController extends Controller
      */
     public function index()
     {
-        //
+        $events = Event::all();
+
+        $data = array();
+        $data['object'] = $events;
+
+        return view('events/index', $data);
+
     }
 
     /**
@@ -28,7 +34,10 @@ class EventController extends Controller
      */
     public function create()
     {
-        //
+        $event = new Event;
+        $data = array();
+        $data['event'] = $event;
+        return view('events.create', $data);
     }
 
     /**
@@ -39,7 +48,10 @@ class EventController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        echo '<pre>';
+        echo $request->event_name;
+        echo $request->budget;
+        echo '<pre';
     }
 
     /**

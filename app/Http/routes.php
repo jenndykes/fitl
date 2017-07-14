@@ -23,8 +23,13 @@ Route::get('hello', function () {
 Route::get('new', function () {
     return view('hello', ['name' => 'Jennifer']);
 });
-Route::get('about', 'PageController@about');
 
+Route::get('about', 'PageController@about');
 Route::get('contact', 'PageController@contact');
 
+Route::post('events/store', 'EventController@store');
+
+Route::get('events/create', 'EventController@create');
 Route::get('events/{event}', 'EventController@show');
+Route::get('events', 'EventController@index');
+
