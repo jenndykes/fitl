@@ -20,4 +20,6 @@
 
 {!! Form::close() !!}
 
+@include('events.partials.delete_object')
+
 @endsection

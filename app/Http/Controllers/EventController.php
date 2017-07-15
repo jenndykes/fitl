@@ -147,6 +147,12 @@ class EventController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $event = Event::findOrFail($id);
+
+        $event->delete();
+
+        return redirect()
+            ->action('EventController@index')
+            ->with('message', '<div class="alert alert-info">The event has been deleted.</div>');
     }
 }
