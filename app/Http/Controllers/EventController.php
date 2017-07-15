@@ -61,6 +61,7 @@ class EventController extends Controller
         if (!$event->save()) {
             $errors = $event->getErrors();
             
+            // if the save fails,
             // redirect back to the create page
             // and pass along the errors
             return redirect()
@@ -100,7 +101,8 @@ class EventController extends Controller
      */
     public function edit($id)
     {
-        //
+        $event = Event::findOrFail($id);
+        return view('events.edit', ['event' => $event]);
     }
 
     /**
@@ -112,7 +114,29 @@ class EventController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $event =Event::findOrFail($id);
+
+        //set the event's data from the form data
+        $event->event_name = $request->event_name;
+        $event->event_type = $request->event_type;
+        $event->budget = $request->budget;
+        $event->event_start_date = $request->event_start_date;
+        $event->event_end_date = $request->event_end_date;
+
+        // if the save fails,
+            // redirect back to the create page
+            // and pass along the errors
+        if (!$event->save()) {
+            return redirect()
+                ->action('EventController@edit', $event->id)
+                ->with('errors', $event->getErrors())
+                ->withInput();  
+                //passes info on form back to the form on redirect, and repopulate form
+        }
+        // successful update, redirect to index and pass success message
+        return redirect()
+            ->action('EventController@index')
+            ->with('message', '<div class="alert alert-success">The event has been updated!</div>');
     }
 
     /**
