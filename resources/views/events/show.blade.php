@@ -16,4 +16,14 @@
 		<p><?php echo $event->budget; ?></p>
 		<p><?php echo $event->ticket_vendor; ?></p>
 		<p><?php echo $event->tickets_sold; ?></p>
+
+<h2>Comp Tickets</h2>
+
+@foreach ($event->comp_tickets as $ticket)
+	<p>{{ $ticket->last_name }}</p>
+	<p>{{ $ticket->num_tickets }}</p><br>
+	<div><small>{{ $ticket->created_at->diffForHumans() }}</small></div>
+@endforeach
+
+
 @endsection
