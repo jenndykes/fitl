@@ -21,7 +21,7 @@ class EventController extends Controller
         $events = Event::all();
 
         $data = array();
-        $data['object'] = $events;
+        $data['event'] = $events;
 
         return view('events/index', $data);
 
@@ -55,7 +55,9 @@ class EventController extends Controller
         $event->event_type = $request->event_type;
         $event->budget = $request->budget;
         $event->event_start_date = $request->event_start_date;
+        $event->event_start_time = $request->event_start_time;
         $event->event_end_date = $request->event_end_date;
+        $event->event_end_time = $request->event_end_time;
 
         //create the new event in the database
         if (!$event->save()) {
@@ -121,7 +123,9 @@ class EventController extends Controller
         $event->event_type = $request->event_type;
         $event->budget = $request->budget;
         $event->event_start_date = $request->event_start_date;
+        $event->event_start_time = $request->event_start_time;
         $event->event_end_date = $request->event_end_date;
+        $event->event_end_time = $request->event_end_time;
 
         // if the save fails,
             // redirect back to the create page

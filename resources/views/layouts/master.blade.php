@@ -9,20 +9,29 @@
 		<link rel="stylesheet" type="text/css" href="{{ asset('css/custom.css') }}">
 	</head>
 	<body>
-		@include('shared.header')
-		
-		<div class="container-fluid">
-			@include('shared.errors')
-			@include('shared.message')
+		<div class="wrapper">
 
-			@yield('content')
+			@include('shared.header')
+			
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-md-12">
+					
+  					
+						@include('shared.errors')
+						@include('shared.message')
+
+						@yield('content')
+					</div>
+				</div>
+			</div>
+
+			
+			@include('shared.footer') 
+
+			<script type="text/javascript" src="{{ asset('js/jquery-3.2.1.js') }}"></script>
+			<script type="text/javascript" src="{{ asset('js/bootstrap.js') }}"></script>
+			<script type="text/javascript" src="{{ asset('js/app.js') }}"></script>
 		</div>
-
-		
-		@include('shared.footer')
-
-		<script type="text/javascript" src="{{ asset('js/jquery-3.2.1.js') }}"></script>
-		<script type="text/javascript" src="{{ asset('js/bootstrap.js') }}"></script>
-		<script type="text/javascript" src="{{ asset('js/app.js') }}"></script>
 	</body>
 </html>

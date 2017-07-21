@@ -4,26 +4,27 @@
 	
 @section('content')
 
-<div class="page-header">
-	<a href="{{ action('EventController@edit', $event->id) }}"
-		class="btn btn-info pull-right">Edit</a>
-	<h1><?php echo $event->event_name; ?></h1>
+<div class="col-md-2"></div>
+<div class="col-md-10"> 
+	@include('events.partials.event_jumbotron')
 </div>
-		<p><?php echo $event->notes; ?></p>
-		<p><?php echo $event->location; ?></p>
-		<p>Date: <?php echo $event->event_start_date; ?></p>
-		<p>Time: <?php echo $event->event_start_time; ?></p>
-		<p><?php echo $event->budget; ?></p>
-		<p><?php echo $event->ticket_vendor; ?></p>
-		<p><?php echo $event->tickets_sold; ?></p>
+<div class="col-md-2"></div>
+<div class="col-md-10">
 
-<h2>Comp Tickets</h2>
+		
+			<p>{{ $event->notes }}</p>
+			<p>{{ $event->location }}</p>
+			
+			<p>Time: {{$event->event_start_time }}</p>
+			<p>{{ $event->budget }}</p>
+			<p>{{ $event->ticket_vendor }}</p>
+			<p>{{ $event->tickets_sold }}</p>
 
-@foreach ($event->comp_tickets as $ticket)
-	<p>{{ $ticket->last_name }}</p>
-	<p>{{ $ticket->num_tickets }}</p><br>
-	<div><small>{{ $ticket->created_at->diffForHumans() }}</small></div>
-@endforeach
+	<div>
+		<a href="{{ action('EventCompTicketController@index', $event->id) }}"
+			class="btn btn-default pull-right">Comp Tickets</a>
+	</div>
+</div>
 
 
 @endsection

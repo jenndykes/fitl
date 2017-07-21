@@ -8,6 +8,6 @@
 	'class' => 'delete-object'
 ]) !!}
 
-<button type="submit" class="btn btn-danger">Delete Event</button>
+<button type="submit" class="btn btn-danger form-button">Delete Event</button>
 
 {!! Form::close() !!}
