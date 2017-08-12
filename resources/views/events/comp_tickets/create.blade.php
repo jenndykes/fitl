@@ -10,7 +10,7 @@
 </div>
 
 <div class="create-form"> 
-	{!! Form::open(['route' => ['events.comp_tickets.store', $event_id]]) !!}
+	{!! Form::open(['route' => ['events.comp_tickets.store', $eventId]]) !!}
 		
 		@include('events.comp_tickets.partials.comp_ticket_form')
 		

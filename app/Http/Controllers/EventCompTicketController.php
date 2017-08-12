@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-use App\Event;
+
 use App\Comp_ticket;
 
 class EventCompTicketController extends Controller
@@ -19,18 +19,15 @@ class EventCompTicketController extends Controller
      */
     public function index($eventId)
     {
-        //dd($eventId);
-        //$event = Event::find($eventId);
-        //$event_id = $eventId;
+
         $comp_tickets = Comp_ticket::where('event_id',$eventId)->get();
-        //$comp_tickets = Comp_ticket::all();
-        //dd($comp_tickets);
 
         $data = array();
-        $data['ticket'] = $comp_tickets;
+        $data = $comp_tickets;
         //dd($data);
 
-        return view('events/comp_tickets/index', compact('data'));
+        return view('events.comp_tickets.index', compact('data', 'eventId'));
+
     }
 
     /**
@@ -40,13 +37,13 @@ class EventCompTicketController extends Controller
      */
     public function create($eventId)
     {
-        $event_id = $eventId;
+        //$event_id = $eventId;
         //dd($event_id);
         $ticket = new Comp_ticket;
         $data = array();
         $data['ticket'] = $ticket; 
         //dd($ticket);       
-        return view('events.comp_tickets.create', compact('data', 'event_id'));
+        return view('events.comp_tickets.create', compact('data', 'eventId'));
     }
 
     /**
@@ -82,19 +79,9 @@ class EventCompTicketController extends Controller
 
         return redirect()
             ->action('EventCompTicketController@index', $eventId)
-            ->with('message', '<div class=alert alert-success">Comp Tickets added!</div>');
+            ->with('message', '<div class="alert alert-success">Comp Tickets added!</div>');
     }
 
-    /**
-     * Display the specified resource.
-     * @param  int  $eventId
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($eventId, $id)
-    {
-        //
-    }
 
     /**
      * Show the form for editing the specified resource.
